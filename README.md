@@ -33,3 +33,11 @@
   <li><b>Push the Data : </b>git push origin master
 </li>
 </ul>
+<h2>Task 3 : Try to run and get working Welcome Page
+(Commit/Push).
+</h2>
+<ul>
+  <li><b>Mode to laravel_practice :</b>cd laravel_practice</li>
+  <li><b>Run laravel_practice :</b>php artisan serve</li>
+  <li>Got Welcome Page</li>
+</ul>
