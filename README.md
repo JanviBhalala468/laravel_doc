@@ -49,3 +49,26 @@
   <li>npm install</li>
   <li>npm run dev</li>
 </ul>
+<h2>Task 5 : Use Seed and Generate testing data for user table</h2>
+<ul>
+  <li><b>Create seeder : </b> php artisan make:seeder UserSeeder</li>
+  <li>Update UserSeeder Class
+    <ul>
+      <pre>
+    public function run()
+    {
+        //
+        $name = Str::random(4);
+        $email = $name . "@gmail.com";
+        $pass = 'pass1234';
+        DB::table('users')->insert([
+            'name' => $name,
+            'email' => $email,
+            'password' => Hash::make($pass)
+        ]);
+    }
+      </pre>
+    </ul>
+  </li>
+  <li><b>Run Seeder : </b> php artisan db:seed --class=UserSeeder</li>
+</ul>
