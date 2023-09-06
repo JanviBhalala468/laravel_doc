@@ -41,3 +41,11 @@
   <li><b>Run laravel_practice :</b>php artisan serve</li>
   <li>Got Welcome Page</li>
 </ul>
+<h2>Task 4 : Use Default AUTH</h2>
+<ul>
+  <li>Composer require Laravel/ui</li>
+  <li>php artisan ui bootstrap</li>
+  <li>php artisan ui bootstrap --auth</li>
+  <li>npm install</li>
+  <li>npm run dev</li>
+</ul>
