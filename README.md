@@ -72,3 +72,56 @@
   </li>
   <li><b>Run Seeder : </b> php artisan db:seed --class=UserSeeder</li>
 </ul>
+<h2>Task 6 & 7 :Datatable to show listing By Yajara & added edit,delete button columns</h2>
+<ul>
+  <li><b>Install Yajara : </b> composer require yajra/laravel-datatables-oracle</li>
+  <li><b>config/app.php</b><pre>
+    'providers' => [
+    Yajra\DataTables\DataTablesServiceProvider::class,
+    ]  
+  </pre>
+  </li>
+  <li><b>Add Route : </b> Route::get('users', [UserController::class, 'index'])->name('users.index');</li>
+  <li> Create Controller and Define Method
+    <pre>
+    public function index(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = User::select('*');
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+      
+                           $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+    
+                            return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+        
+        return view('users');
+    }
+    </pre>
+  </li>
+  <li>Create View and Add Java script
+  <pre>
+  $(function () {
+    
+    var table = $('.data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('users.index') }}",
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'name', name: 'name'},
+            {data: 'email', name: 'email'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ]
+    });
+  });
+  </pre>
+    
+  </li>
+  <li>Run Code</li>
+</ul>
