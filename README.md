@@ -125,3 +125,11 @@
   </li>
   <li>Run Code</li>
 </ul>
+<h2>Task 9 : Create Add-Edit-Delete  for user with validatiion</h2>
+<ul>
+  <li>Create a View File containing form to add/Edit </li>
+  <li>Create Route For that View file</li>
+  <li>Add Controller to save the Data when form is submitted.</li>
+  <li>Use the datatable which is created earlier to delete and edit record</li>
+  <li>Create a controller to handle edit and delete events.</li>
+</ul>
