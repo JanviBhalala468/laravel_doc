@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\saveInDBController;
+use App\Http\Controllers\actionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('users', [userController::class, 'index'])->name('users.index');
+
+Route::view('saveInDB', 'saveInDB');
+Route::post('saveInDBController', [saveInDBController::class, 'getData']);
+
+//Route::get('actionController', [actionController::class, 'list']);
+Route::get('deleteControllerBtn/{id}', [actionController::class, 'Delete']);
+Route::get('editControllerBtn/{id}', [actionController::class, 'Edit']);
+Route::post('editController', [actionController::class, 'EditData']);

@@ -17,7 +17,7 @@ class userController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
 
-                    $btn = '<a href="#" class="edit btn btn-primary btn-sm">Edit</a> <a href="#" class="edit btn btn-primary btn-sm">Delete</a>';
+                    $btn = '<a href="editControllerBtn/' . $row->id . '" class="edit btn btn-info btn-sm">Edit</a> <a href="deleteControllerBtn/' . $row->id . '" class=" btn btn-danger btn-sm">Delete</a>';
 
                     return $btn;
                 })
