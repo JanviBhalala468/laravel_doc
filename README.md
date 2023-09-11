@@ -185,10 +185,10 @@
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=587
-MAIL_USERNAME=bhalalajanvi15
+MAIL_USERNAME=abc
 MAIL_PASSWORD=****
 MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=bhalalajanvi15@gmail.com
+MAIL_FROM_ADDRESS=abc@gmail.com
 MAIL_FROM_NAME="${APP_NAME}"
   </pre>
 </li>
@@ -235,4 +235,29 @@ MAIL_FROM_NAME="${APP_NAME}"
   }
     </pre>
   </li>
+</ul>
+<h2>Task 8C :To configur mail Use model on Delete (Observable)</h2>
+<ul>
+  <li>Create observers class for User <b>php artisan make:observer UserObserver --model=User</b></li>
+  <li>To send mail after deleting row add function :
+    <pre>
+    public function deleted(User $user)
+    {
+        \Mail::raw('Hello, Your record in user table is deleted.', function ($message) {
+            $message->from('sender@gmail.com', 'sender name');
+            $message->to('reciever@gmail.com');
+            $message->subject('Register again..!');
+        });
+    }
+    </pre>
+  </li>
+  <li>Register Observers class on provider : <b> app/Providers/EventServiceProvider.php</b>
+    <pre>
+  public function boot()
+  {
+      User::observe(UserObserver::class);
+  }
+    </pre>
+  </li>
+  <li>Create controller To delete record and register it in route.php</li>
 </ul>
