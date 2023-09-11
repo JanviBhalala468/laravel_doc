@@ -50,6 +50,9 @@ table th {
     background-color: darkgray;
     color: white;
 }
+table td div {
+    width: 150px;
+}
 @charset "UTF-8";
 /*!
  * Bootstrap  v5.3.1 (https://getbootstrap.com/)

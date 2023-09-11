@@ -32,3 +32,4 @@ Route::post('saveInDBController', [saveInDBController::class, 'getData']);
 Route::get('deleteControllerBtn/{id}', [actionController::class, 'Delete']);
 Route::get('editControllerBtn/{id}', [actionController::class, 'Edit']);
 Route::post('editController', [actionController::class, 'EditData']);
+Route::get('fullNameBtn/{id}', [actionController::class, 'fullNameBtn']);

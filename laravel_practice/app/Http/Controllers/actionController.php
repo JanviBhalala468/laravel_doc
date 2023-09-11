@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\newUser;
 use Illuminate\Support\Facades\Hash;
 
 class actionController extends Controller
@@ -32,5 +33,10 @@ class actionController extends Controller
         $data->password = Hash::make($req->input('password'));
         $data->save();
         return redirect('users');
+    }
+    function fullNameBtn($id)
+    {
+        return User::find($id)->full_name;
+        //return "hello";
     }
 }
