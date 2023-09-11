@@ -5,6 +5,8 @@ use App\Http\Controllers\userController;
 use App\Http\Controllers\saveInDBController;
 use App\Http\Controllers\actionController;
 use App\Http\Controllers\productController;
+use App\Http\Controllers\mailController;
+
 
 
 /*
@@ -50,3 +52,4 @@ Route::get('send-mail', function () {
 
     dd("Email is Sent.");
 });
+Route::get('my-test-mail', [mailController::class, 'index']);
