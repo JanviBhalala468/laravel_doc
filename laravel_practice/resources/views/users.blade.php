@@ -23,6 +23,7 @@
                 <th>No</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Full Data</th>
                 <th width="100px">Action</th>
             </tr>
         </thead>
@@ -44,6 +45,7 @@
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
+            {data: 'FullName', name: 'FullName'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
