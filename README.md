@@ -283,4 +283,10 @@ MAIL_FROM_NAME="${APP_NAME}"
   </li>
   <li>add View File : mailable.blade.php</li>
 </ul>
+<h2>Task 12 : On Creating Observable => Create Refrence of 6 Digit </h2>
+<ul>
+  <li>Create observaer for product and use saving method to Insert data in DB</li>
+  <li>Use blade view to get all other field of table </li>
+  <li>use controller to save data in DB</li>
+</ul>
 
