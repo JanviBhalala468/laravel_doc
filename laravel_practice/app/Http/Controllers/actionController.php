@@ -17,8 +17,13 @@ class actionController extends Controller
     function Delete($id)
     {
         $data = User::find($id);
-        $data->delete();
-        return redirect(url()->previous());
+        $result = $data->delete();
+        if ($result) {
+            return redirect('send-mail');
+        } else {
+            return "try again";
+        }
+        //return redirect(url()->previous());
     }
     function Edit($id)
     {
