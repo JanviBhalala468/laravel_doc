@@ -14,11 +14,11 @@ class productController extends Controller
     }
     function addProduct(Request $req)
     {
-        $member = new product;
-        $member->name = $req->name;
-        $member->mfd = $req->input('date');
-        $member->addDate($req->days);
-        $member->save();
+        $product = new product;
+        $product->name = $req->name;
+        $product->mfd = $req->input('date');
+        $product->addDate($req->days);
+        $product->save();
         return redirect(url()->previous());
     }
 }

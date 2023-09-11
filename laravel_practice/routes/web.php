@@ -38,3 +38,15 @@ Route::get('fullNameBtn/{id}', [actionController::class, 'fullNameBtn']);
 Route::get('productController', [productController::class, 'index']);
 Route::post('addproductController', [productController::class, 'addProduct']);
 Route::view('addPro', 'addProduct');
+
+Route::get('send-mail', function () {
+
+    $details = [
+        'title' => 'Mail from Janvi',
+        'body' => 'This is for testing email using smtp'
+    ];
+
+    \Mail::to('janvibhalala15@gmail.com')->send(new \App\Mail\MyTestMail($details));
+
+    dd("Email is Sent.");
+});
