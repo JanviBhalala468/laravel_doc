@@ -21,6 +21,6 @@ class saveInDBController extends Controller
         $member->email = $req->input('email');
         $member->password = Hash::make($req->input('password'));
         $member->save();
-        return "hello done";
+        return redirect('users');
     }
 }

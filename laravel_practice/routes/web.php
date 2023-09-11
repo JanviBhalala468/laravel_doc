@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\saveInDBController;
 use App\Http\Controllers\actionController;
+use App\Http\Controllers\productController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +35,6 @@ Route::get('deleteControllerBtn/{id}', [actionController::class, 'Delete']);
 Route::get('editControllerBtn/{id}', [actionController::class, 'Edit']);
 Route::post('editController', [actionController::class, 'EditData']);
 Route::get('fullNameBtn/{id}', [actionController::class, 'fullNameBtn']);
+Route::get('productController', [productController::class, 'index']);
+Route::post('addproductController', [productController::class, 'addProduct']);
+Route::view('addPro', 'addProduct');
