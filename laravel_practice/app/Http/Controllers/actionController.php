@@ -18,12 +18,12 @@ class actionController extends Controller
     {
         $data = User::find($id);
         $result = $data->delete();
-        if ($result) {
-            return redirect('send-mail');
-        } else {
-            return "try again";
-        }
-        //return redirect(url()->previous());
+        // if ($result) {
+        //     return redirect('send-mail');
+        // } else {
+        //     return "try again";
+        // }
+        return redirect(url()->previous());
     }
     function Edit($id)
     {

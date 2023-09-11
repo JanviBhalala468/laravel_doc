@@ -1,2 +1,2 @@
-<h2>Mail From Janvi Bhalala</h2>
-<p>Record Deleted ..!</p>
+<h4>Mail From Janvi Bhalala</h4>
+<p>Record Will Be Deleted ..!</p>
