@@ -261,3 +261,26 @@ MAIL_FROM_NAME="${APP_NAME}"
   </li>
   <li>Create controller To delete record and register it in route.php</li>
 </ul>
+<h2>Task 8C : Send mail using mailable</h2>
+<ul>
+  <li>Create Mailable Class
+  <pre>
+  public function build()
+  {
+      return $this->view('mailable');
+  }
+  </pre>
+  </li>
+  <li>Create controller and add route (my-test-mail) for it
+    <pre>
+  public function myTestMail()
+  {
+    $myEmail = 'abc@gmail.com';
+    Mail::to($myEmail)->send(new MyTestMailable());
+    dd("Mail Send Successfully");
+  }
+    </pre>
+  </li>
+  <li>add View File : mailable.blade.php</li>
+</ul>
+
