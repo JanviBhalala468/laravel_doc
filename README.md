@@ -149,3 +149,31 @@
     </ul> 
   </li>
 </ul>
+<h2>Task 11 : Model we can add custom method addDate</h2>
+<ul>
+  <li>Create a custom method in Model and use the Carbon to create Expire Date
+    <pre>
+    public function addDate($days)
+    {
+        $current = Carbon::create($this->mfd);
+        $this->ex_date = $current->addDays($days);
+    }
+    </pre>
+  </li>
+  <li>Create a blade file to get Inputs</li>
+  <li>
+    In constuctor Use addDate method 
+    <pre>
+    function addProduct(Request $req)
+    {
+        $product = new product;
+        $product->name = $req->name;
+        $product->mfd = $req->input('date');
+        $product->addDate($req->days);
+        $product->save();
+        return redirect(url()->previous());
+    }
+    </pre>
+  </li>
+  <li>By followinf these steps product will be added to DB with Expire Date.</li>
+</ul>
