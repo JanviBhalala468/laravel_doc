@@ -219,3 +219,20 @@ MAIL_FROM_NAME="${APP_NAME}"
   </pre>
 </li>
 <li>Run Code</li>
+<h2>Task 8B : Send Email on Delete</h2>
+<ul>
+  <li>Call route of send mail on delete success.
+    <pre>
+  function Delete($id)
+  {
+      $data = User::find($id);
+      $result = $data->delete();
+      if ($result) {
+          return redirect('send-mail');
+      } else {
+          return "try again";
+      }
+  }
+    </pre>
+  </li>
+</ul>
