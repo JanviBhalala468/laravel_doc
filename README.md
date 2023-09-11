@@ -133,3 +133,19 @@
   <li>Use the datatable which is created earlier to delete and edit record</li>
   <li>Create a controller to handle edit and delete events.</li>
 </ul>
+<h2>Task 10 : Getter / Setter method ( accessor / mutator )</h2>
+<ul>
+  <li>Add Function in model of users table to create accesor
+      <pre>
+  public function getFullNameAttribute($value)
+  {
+      return " $this->name $this->email";
+  }
+      </pre>
+  </li>
+  <li>Use this function name with predefined formate in controller to access this function value
+    <ul>
+      <li>User::find($id)->full_name;</li>
+    </ul> 
+  </li>
+</ul>
