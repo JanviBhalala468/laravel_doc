@@ -177,3 +177,45 @@
   </li>
   <li>By followinf these steps product will be added to DB with Expire Date.</li>
 </ul>
+<h2>Task 8A : Send Email via php artisan</h2>
+<li>Generate App password in your gmail account</li>
+<li>
+  Set Configuration in env file (Use App password in env file)
+  <pre>
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=bhalalajanvi15
+MAIL_PASSWORD=****
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=bhalalajanvi15@gmail.com
+MAIL_FROM_NAME="${APP_NAME}"
+  </pre>
+</li>
+<li>Create mail class MyTestMail for email sending : <b> php artisan make:mail MyTestMail</b>
+  <pre>
+    public function __construct($details)
+    {
+        $this->details = $details;
+    }
+    public function build()
+    {
+        return $this->subject('Mail from ItSolutionStuff.com')
+                    ->view('emails.myTestMail');
+    }
+  </pre>
+</li>
+<li>Create a Blade View to send in email</li>
+<li>Add Route To send mail
+  <pre>
+    Route::get('send-mail', function () { 
+    $details = [
+        'title' => 'Mail from ItSolutionStuff.com',
+        'body' => 'This is for testing email using smtp'
+    ];
+    Mail::to('xyz@gmail.com')->send(new \App\Mail\MyTestMail($details));
+    dd("Email is Sent.");
+});
+  </pre>
+</li>
+<li>Run Code</li>
