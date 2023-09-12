@@ -18,10 +18,7 @@ class userController extends Controller
                     return User::find($row->id)->full_name;
                 })
                 ->addColumn('action', function ($row) {
-
-                    $btn = '<div class="d-flex"><a href="fullNameBtn/' . $row->id . '" class="edit btn btn-warning btn-sm m-1">FullName</a><a href="editControllerBtn/' . $row->id . '" class="edit btn btn-info btn-sm m-1">Edit</a> <a href="deleteControllerBtn/' . $row->id . '" class=" btn btn-danger btn-sm m-1">Delete</a><div>';
-
-                    return $btn;
+                    return $row->id;
                 })
                 ->rawColumns(['action'])
                 ->make(true);

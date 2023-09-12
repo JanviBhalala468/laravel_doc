@@ -31,6 +31,8 @@
         </tbody>
     </table>
 </div>
+<!-- $btn = '<div class="d-flex"><a href="fullNameBtn/' .data . '" class="edit btn btn-warning btn-sm m-1">FullName</a><a href="editControllerBtn/' . data . '" class="edit btn btn-info btn-sm m-1">Edit</a> <a href="deleteControllerBtn/' . data . '" class=" btn btn-danger btn-sm m-1">Delete</a><div>'; -->
+
    
 </body>
    
@@ -46,7 +48,12 @@
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
             {data: 'FullName', name: 'FullName'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
+            {data: 'action', name: 'Actiona', orderable: false, searchable: false,render:function (data,type,row){
+                console.log(data);
+                 var btn = '<div class="d-flex"><a href="fullNameBtn/' +data + '" class="edit btn btn-warning btn-sm m-1">FullName</a><a href="editControllerBtn/' + data + '" class="edit btn btn-info btn-sm m-1">Edit</a> <a href="deleteControllerBtn/' +data + '" class=" btn btn-danger btn-sm m-1">Delete</a><div>';
+
+               return btn;
+            }},
         ]
     });
     
