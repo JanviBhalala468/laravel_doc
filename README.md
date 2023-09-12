@@ -289,4 +289,42 @@ MAIL_FROM_NAME="${APP_NAME}"
   <li>Use blade view to get all other field of table </li>
   <li>use controller to save data in DB</li>
 </ul>
+<h2>Update Task 7 : Yajara Column Render at Client side</h2>
+<ul>
+  <li>user.blade.php  (Client Side)
+    <pre>
+    columns: [
+        {data: 'id', name: 'id'},
+        {data: 'name', name: 'name'},
+        {data: 'email', name: 'email'},
+        {data: 'FullName', name: 'FullName'},
+        {data: 'action', name: 'Actiona', orderable: false, searchable: false,render:function (data,type,row){
+            console.log(data);
+             var btn = '** buttons you want **';
+           return btn;
+        }},
+    ]
+    </pre>
+  </li>
+  <li>Controller 
+    <pre>
+  public function index(Request $request)
+  {
+      if ($request->ajax()) {
+          $data = User::select('*');
+          return Datatables::of($data)
+              ->addIndexColumn()->addColumn('FullName', function ($row) {
+                  return User::find($row->id)->full_name;
+              })
+              ->addColumn('action', function ($row) {
+                  return $row->id;
+              })
+              ->rawColumns(['action'])
+              ->make(true);
+      }
+      return view('users');
+  }
+    </pre>  
+  </li>
+</ul>
 
