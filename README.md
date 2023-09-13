@@ -210,7 +210,7 @@ MAIL_FROM_NAME="${APP_NAME}"
   <pre>
     Route::get('send-mail', function () { 
     $details = [
-        'title' => 'Mail from ItSolutionStuff.com',
+        'title' => 'Mail from Janvi',
         'body' => 'This is for testing email using smtp'
     ];
     Mail::to('xyz@gmail.com')->send(new \App\Mail\MyTestMail($details));
@@ -325,6 +325,62 @@ MAIL_FROM_NAME="${APP_NAME}"
       return view('users');
   }
     </pre>  
+  </li>
+</ul>
+<h2>Update Task 5 Seeder</h2>
+<ul>
+  <pre>
+public function run()
+{
+    $count = 10;
+    //
+    while ($count > 0) {
+        $name = Str::random(4);
+        $email = $name . "@gmail.com";
+        $pass = 'pass1234';
+        DB::table('users')->insert([
+            'name' => $name,
+            'email' => $email,
+            'password' => Hash::make($pass)
+        ]);
+        $count--;
+    }
+    //User::factory(User::class, 5)->create();
+}
+  </pre>
+</ul>
+<h2>Update Task 7 Send Data with ajax in Yajara</h2>
+<ul>
+  <li>Sending data
+    <pre>
+  ajax: {
+        url: "{{ route('users.index') }}",
+        type: "GET",
+        data: function (d) {
+            // You can pass additional data here
+            d.custom_param = 'Mansi';
+        },
+    },
+    </pre>
+  </li>
+  <li>Recieving Data in Controller 
+    <pre>
+  $customParam = $request->input('custom_param');
+  if ($request->ajax()) {;
+        $data = User::select('*')
+        ->where('name', $customParam)
+        ->get();
+        return Datatables::of($data)
+            ->addIndexColumn()->addColumn('FullName', function ($row) {
+                return User::find($row->id)->full_name;
+            })
+            ->addColumn('action', function ($row) {
+                return $row->id;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+    }
+    </pre>
   </li>
 </ul>
 
