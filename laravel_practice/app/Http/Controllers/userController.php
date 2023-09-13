@@ -11,8 +11,13 @@ class userController extends Controller
     //
     public function index(Request $request)
     {
+        $customParam = $request->input('custom_param');
         if ($request->ajax()) {
+            // return ($request->custom_param);
             $data = User::select('*');
+            // ->where('name', $customParam)
+            //     ->get();
+
             return Datatables::of($data)
                 ->addIndexColumn()->addColumn('FullName', function ($row) {
                     return User::find($row->id)->full_name;

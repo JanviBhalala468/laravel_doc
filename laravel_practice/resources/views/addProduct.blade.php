@@ -12,7 +12,7 @@
     <div class="main-container mt-5">
     
         <div id="main " class="container ">
-            <h1>Add User</h1>
+            <h1>Add Product</h1>
             <form action="{{URL::to('/')}}/{{'addproductController'}}" method="POST">
                 @csrf
                 <div >
