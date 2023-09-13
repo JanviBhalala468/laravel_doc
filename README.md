@@ -162,7 +162,7 @@
   </li>
   <li>Create a blade file to get Inputs</li>
   <li>
-    In constuctor Use addDate method 
+    In controller Use addDate method 
     <pre>
     function addProduct(Request $req)
     {
@@ -380,6 +380,45 @@ public function run()
             ->rawColumns(['action'])
             ->make(true);
     }
+    </pre>
+  </li>
+</ul>
+<h2>Update Task 11 : Change date of exp on Update</h2>
+<ul>
+  <li>Model Function :
+  <pre>
+public function addDate($days)
+{
+    $current = Carbon::create($this->ex_date);
+    $this->ex_date = $current->addDays($days);
+}
+  </pre>
+  </li>
+  <li>Function to add data in Controller
+    <pre>
+function addProduct(Request $req)
+{
+    $current = Carbon::now();
+    $product = new product;
+    $product->name = $req->name;
+    $product->mfd = $current;
+    $product->ex_date = $current;
+    $product->addDate(15);
+    $product->save();
+    return redirect('product1');
+}
+    </pre>
+  </li>
+  <li>Function in controller to Update 
+    <pre>
+  function EditData(Request $req)
+  {
+      $data = product::find($req->id);
+      $data->name = $req->name;
+      $data->addDate($req->days);
+      $data->save();
+      return redirect('product1');
+  }
     </pre>
   </li>
 </ul>
