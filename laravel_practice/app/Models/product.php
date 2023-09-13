@@ -13,7 +13,7 @@ class product extends Model
     // public $table = "damo";
     public function addDate($days)
     {
-        $current = Carbon::create($this->mfd);
+        $current = Carbon::create($this->ex_date);
         $this->ex_date = $current->addDays($days);
     }
 }

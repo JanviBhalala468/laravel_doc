@@ -37,9 +37,9 @@ Route::get('deleteControllerBtn/{id}', [actionController::class, 'Delete']);
 Route::get('editControllerBtn/{id}', [actionController::class, 'Edit']);
 Route::post('editController', [actionController::class, 'EditData']);
 Route::get('fullNameBtn/{id}', [actionController::class, 'fullNameBtn']);
-Route::get('productController', [productController::class, 'index']);
 Route::post('addproductController', [productController::class, 'addProduct']);
 Route::view('addPro', 'addProduct');
+Route::view('product1', 'product');
 
 Route::get('send-mail', function () {
 
@@ -53,3 +53,8 @@ Route::get('send-mail', function () {
     dd("Email is Sent.");
 });
 Route::get('my-test-mail', [mailController::class, 'index']);
+Route::get('productlist', [productController::class, 'index'])->name('productlist.index');
+Route::view('editPro', 'editProduct');
+
+Route::get('editProControllerBtn/{id}', [productController::class, 'Edit']);
+Route::post('editProController', [productController::class, 'EditData']);

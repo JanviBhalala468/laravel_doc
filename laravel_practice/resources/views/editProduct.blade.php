@@ -12,8 +12,8 @@
     <div class="main-container mt-5">
     
         <div id="main " class="container ">
-            <h1>Add Product</h1>
-            <form action="{{URL::to('/')}}/{{'addproductController'}}" method="POST">
+            <h1>Edit Product</h1>
+            <form action="{{URL::to('/')}}/{{'editProController'}}" method="POST">
                 @csrf
                 <div >
                     <div>
@@ -25,6 +25,11 @@
                         <div class="error">@error('name'){{$message}}@enderror</div>
                     </div>
                    
+                    <div>
+                        <div for="days"><b>Days to use *</b></div>
+                        <input type="number"  name="days"  >
+                        <div class="error">@error('days'){{$message}}@enderror</div>
+                    </div>
 
                 
 
