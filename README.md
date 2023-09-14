@@ -422,4 +422,25 @@ function addProduct(Request $req)
     </pre>
   </li>
 </ul>
+<h2>Update Task 9 : Delete row with Ajax call</h2>
+<ul>
+  <li>Script to call ajax
+    <pre>
+$(function () {
+  $delete=function(id){
+    $.ajax({url: "deleteControllerAjaxBtn/"+id ,
+        tyle: "GET",
+        data:id,
+        success: function(result){
+        table.ajax.reload(null, false);
+        console.log('hello done');
+    }});
+  } 
+});
+function CallMe(id) {  
+  $delete(id);
+}
+    </pre>
+  </li>
+</ul>
 
