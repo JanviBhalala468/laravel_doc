@@ -26,6 +26,17 @@ class actionController extends Controller
         }
         //return redirect(url()->previous());
     }
+    function DeleteAjax($id)
+    {
+        $data = User::find($id);
+        $result = $data->delete();
+        if ($result) {
+            return "Data Deleted";
+        } else {
+            return "try again";
+        }
+        //return redirect(url()->previous());
+    }
     function Edit($id)
     {
         $data = User::find($id);

@@ -15,7 +15,7 @@
 <body>
     
 <div class="container">
-    <h1>Laravel 8 Datatables </h1>
+    <h1> Product list </h1>
     <a href="{{URL::to('/')}}/addPro" class="edit btn btn-info btn-sm mb-3 mt-3 ">Add User</a>
     <table class="table table-bordered data-table">
         <thead>
