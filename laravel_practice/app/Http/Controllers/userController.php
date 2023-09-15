@@ -19,17 +19,17 @@ class userController extends Controller
             //     ->get();
 
             return Datatables::of($data)
-                ->addIndexColumn()->addColumn('FullName', function ($row) {
-                    return User::find($row->id)->full_name;
-                })
-                ->addColumn('action', function ($row) {
-                    return $row->id;
-                })
-                ->rawColumns(['action'])
-                ->editColumn('DT_RowId', function ($row) {
-                    // Return a unique identifier for each row, for example, the 'id' column
-                    return 'row_' . $row->id;
-                })
+                // ->addIndexColumn()->addColumn('FullName', function ($row) {
+                //     return User::find($row->id)->full_name;
+                // })
+                // ->addColumn('action', function ($row) {
+                //     return $row->id;
+                // })
+                // ->rawColumns(['action'])
+                // ->editColumn('DT_RowId', function ($row) {
+                //     // Return a unique identifier for each row, for example, the 'id' column
+                //     return 'row_' . $row->id;
+                // })
                 ->make(true);
         }
 

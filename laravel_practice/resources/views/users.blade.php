@@ -23,7 +23,7 @@
                 <th>No</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Full Data</th>
+                <!-- <th>Full Data</th> -->
                 <th width="100px">Action</th>
             </tr>
         </thead>
@@ -42,6 +42,7 @@
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
+        rowId: 'id',
        // ajax: "{{ route('users.index') }}",
         ajax: {
             url: "{{ route('users.index') }}",
@@ -55,11 +56,11 @@
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
-            {data: 'FullName', name: 'FullName'},
+            // {data: 'name', name: 'FullName'},
             
-            {data: 'action', name: 'Actiona', orderable: false, searchable: false,render:function (data,type,row){
-                //console.log(data);
-                 var btn = '<div class="d-flex"><a href="fullNameBtn/' +data + '" class="edit btn btn-warning btn-sm m-1">FullName</a><a href="editControllerBtn/' + data + '" class="edit btn btn-info btn-sm m-1">Edit</a> <button    id="'+data+'" class="btn-delete btn btn-danger btn-sm m-1">Delete</button><div>';
+            {data: null, name: 'Action', orderable: false, searchable: false, render:function (data, type, row){
+                // console.log("render: ", data, type, row);
+                 var btn = '<div class="d-flex"><a href="fullNameBtn/' +data + '" class="edit btn btn-warning btn-sm m-1">FullName</a><a href="editControllerBtn/' + data + '" class="edit btn btn-info btn-sm m-1">Edit</a> <button class="btn-delete btn btn-danger btn-sm m-1">Delete</button><div>';
 
                return btn;
             }},
@@ -75,15 +76,16 @@
     //     }});
     // } 
     $('#data-table').on('click', '.btn-delete', function() {
-           var id = $(this).attr('id');
+           var id = $(this).closest('tr').attr('id');
+           console.log("deleting id: " + id);
             $.ajax({url: "deleteControllerAjaxBtn/"+id ,
-            tyle: "GET",
-            data:id,
-            success: function(result){
-                table.ajax.reload(null, false);
-                console.log('hello done');
-            }
-        });
+                type: "GET",
+                // data: id,
+                success: function(result){
+                    table.draw(false);
+                    console.log('hello done');
+                }
+            });
     });
   });
 //   function CallMe($this) {  

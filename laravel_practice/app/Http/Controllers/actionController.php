@@ -50,9 +50,9 @@ class actionController extends Controller
         $email = new MyTestMail($details);
 
         // Push the email sending task onto the Redis queue
-        dispatch(function () use ($recipientEmail, $email) {
-            Mail::to($recipientEmail)->queue($email);
-        });
+        // dispatch(function () use ($recipientEmail, $email) {
+        Mail::to($recipientEmail)->queue($email);
+        // });
 
 
         return 'Email has been queued for sending.';

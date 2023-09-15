@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Faker\Factory as FakerFactory;
+
 
 class UserSeeder extends Seeder
 {
@@ -18,11 +20,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $count = 10;
+        $customFaker = FakerFactory::create();
+
+        $count = 5;
         //
         while ($count > 0) {
-            $name = Str::random(4);
-            $email = $name . "@gmail.com";
+            $name = $customFaker->name;
+            $email = $customFaker->email;
             $pass = 'pass1234';
             DB::table('users')->insert([
                 'name' => $name,
