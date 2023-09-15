@@ -26,6 +26,10 @@ class userController extends Controller
                     return $row->id;
                 })
                 ->rawColumns(['action'])
+                ->editColumn('DT_RowId', function ($row) {
+                    // Return a unique identifier for each row, for example, the 'id' column
+                    return 'row_' . $row->id;
+                })
                 ->make(true);
         }
 

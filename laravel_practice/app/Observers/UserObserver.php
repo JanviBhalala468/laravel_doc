@@ -3,6 +3,8 @@
 namespace App\Observers;
 
 use App\Models\User;
+use App\Mail\MyTestMail;
+use Illuminate\Support\Facades\Mail;
 
 class UserObserver
 {
@@ -37,20 +39,26 @@ class UserObserver
     public function deleted(User $user)
     {
         //
-        \Mail::raw('Hello, Your record in user table is deleted.', function ($message) {
-            $message->from('bhalalajanvi15@gmail.com', 'bhalalajanvi15');
-            $message->to('janvibhalala15@gmail.com');
-            $message->subject('Register again..!');
-        });
+        // \Mail::raw('Hello, Your record in user table is deleted.', function ($message) {
+        //     $message->from('bhalalajanvi15@gmail.com', 'bhalalajanvi15');
+        //     $message->to('janvibhalala15@gmail.com');
+        //     $message->subject('Register again..!');
+        // });
     }
     public function deleting(User $user)
     {
-        //
-        // \Mail::raw('Hello, Your record in user table will be  deleted.', function ($message) {
-        //     $message->from('bhalalajanvi15@gmail.com', 'bhalalajanvi15');
-        //     $message->to('janvibhalala15@gmail.com');
-        //     $message->subject('Are you sure..?');
-        // });
+        $details = [
+            'subject' => 'Mail from mailFun function mail queueeeee from mail',
+            'body' => 'This is for testing email using queue'
+        ];
+        $recipientEmail = 'janvibhalala15@gmail.com';
+        $email = new MyTestMail($details);
+
+        // Push the email sending task onto the Redis queue
+        dispatch(function () use ($recipientEmail, $email) {
+            Mail::to($recipientEmail)->queue($email);
+        });
+
     }
 
     /**

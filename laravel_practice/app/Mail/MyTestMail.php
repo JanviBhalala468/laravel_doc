@@ -7,10 +7,12 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
+use Illuminate\Mail\Message;
+
 class MyTestMail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $details;
     /**
      * Create a new message instance.
      *
@@ -20,6 +22,7 @@ class MyTestMail extends Mailable
     {
         //
         $this->details = $details;
+
     }
 
     /**
@@ -29,7 +32,11 @@ class MyTestMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mail from Janvi')
-            ->view('mail');
+        return $this->subject($this->details['subject'])
+            ->view('mail')
+            ->with([
+                'content' => $this->details['body']
+            ]);
+
     }
 }

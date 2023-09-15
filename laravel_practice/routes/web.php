@@ -45,7 +45,7 @@ Route::view('product1', 'product');
 Route::get('send-mail', function () {
 
     $details = [
-        'title' => 'Mail from Janvi',
+        'subject' => 'Mail from Janvi',
         'body' => 'This is for testing email using smtp'
     ];
 
@@ -59,3 +59,5 @@ Route::view('editPro', 'editProduct');
 
 Route::get('editProControllerBtn/{id}', [productController::class, 'Edit']);
 Route::post('editProController', [productController::class, 'EditData']);
+
+Route::get('mailFun', [actionController::class, 'mailFun']);

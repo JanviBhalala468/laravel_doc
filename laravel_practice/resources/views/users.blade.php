@@ -17,7 +17,7 @@
 <div class="container">
     <h1>Laravel 8 Datatables </h1>
     <a href="{{URL::to('/')}}/saveInDB" class="edit btn btn-info btn-sm mb-3 mt-3 ">Add User</a>
-    <table class="table table-bordered data-table">
+    <table class="table table-bordered data-table" id="data-table">
         <thead>
             <tr>
                 <th>No</th>
@@ -58,25 +58,36 @@
             {data: 'FullName', name: 'FullName'},
             
             {data: 'action', name: 'Actiona', orderable: false, searchable: false,render:function (data,type,row){
-                console.log(data);
-                 var btn = '<div class="d-flex"><a href="fullNameBtn/' +data + '" class="edit btn btn-warning btn-sm m-1">FullName</a><a href="editControllerBtn/' + data + '" class="edit btn btn-info btn-sm m-1">Edit</a> <button  onclick="CallMe(' + data + ')"  id="'+data+'" class=" btn btn-danger btn-sm m-1">Delete</button><div>';
+                //console.log(data);
+                 var btn = '<div class="d-flex"><a href="fullNameBtn/' +data + '" class="edit btn btn-warning btn-sm m-1">FullName</a><a href="editControllerBtn/' + data + '" class="edit btn btn-info btn-sm m-1">Edit</a> <button    id="'+data+'" class="btn-delete btn btn-danger btn-sm m-1">Delete</button><div>';
 
                return btn;
             }},
         ]
     });
-    $delete=function(id){
-        $.ajax({url: "deleteControllerAjaxBtn/"+id ,
+    // $delete=function(id){
+    //     $.ajax({url: "deleteControllerAjaxBtn/"+id ,
+    //         tyle: "GET",
+    //         data:id,
+    //         success: function(result){
+    //         table.ajax.reload(null, false);
+    //         console.log('hello done');
+    //     }});
+    // } 
+    $('#data-table').on('click', '.btn-delete', function() {
+           var id = $(this).attr('id');
+            $.ajax({url: "deleteControllerAjaxBtn/"+id ,
             tyle: "GET",
             data:id,
             success: function(result){
-            table.ajax.reload(null, false);
-            console.log('hello done');
-        }});
-    } 
+                table.ajax.reload(null, false);
+                console.log('hello done');
+            }
+        });
+    });
   });
-  function CallMe(id) {  
-  $delete(id);
-}
+//   function CallMe($this) {  
+//     $delete(id);
+//   }
 </script>
 </html>
